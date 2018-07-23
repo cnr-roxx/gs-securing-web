@@ -1,0 +1,44 @@
+spring:
+  profiles.active: development
+---
+spring:
+  profiles: development
+  application:
+    name: test-spring-sessions
+  output:
+    ansi:
+      enabled: never
+  batch:
+    initialize-schema: always
+  session:
+    store-type: jdbc
+    timeout: 600
+    jdbc:
+      initialize-schema: always
+      schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
+      table-name: SPRING_SESSION
+  datasource:
+    name: app
+    username: sa
+    password:
+    platform: h2
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: true
+#server:
+#  servlet:
+#    session:
+#      timeout: 1600
